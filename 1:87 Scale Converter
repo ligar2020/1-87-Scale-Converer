@@ -1,0 +1,22 @@
+import streamlit as st
+
+# Set page title
+st.title("1:87 Scale Feet to Inches Converter")
+
+# User input
+real_feet = st.number_input("Enter real feet:", min_value=0.0, step=1.0, format="%.2f")
+
+# Conversion function
+def scale_conversion(real_feet):
+    scale_ratio = 87  # 1:87 scale
+    scale_feet = real_feet / scale_ratio  # Convert to scale feet
+    scale_inches = (real_feet * 12) / scale_ratio  # Convert to scale inches
+    return scale_feet, scale_inches
+
+# Perform conversion if input is provided
+if real_feet > 0:
+    scale_feet, scale_inches = scale_conversion(real_feet)
+    st.write(f"### Scale Feet: {scale_feet:.2f} ft")
+    st.write(f"### Scale Inches: {scale_inches:.2f} in")
+
+st.info("Enter a value in real feet and get the converted scale feet and inches.")
